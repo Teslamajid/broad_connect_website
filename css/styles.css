@@ -1,0 +1,1639 @@
+/* =============================================
+   BroadConnect - Production Stylesheet
+   Organized, optimized, maintainable
+   ============================================= */
+
+/* ===========================================
+   1. CSS VARIABLES
+   =========================================== */
+:root {
+    /* Colors */
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --primary-light: #3b82f6;
+    --secondary: #0f172a;
+    --accent: #06b6d4;
+    --white: #ffffff;
+    --gray-50: #f8fafc;
+    --gray-100: #f1f5f9;
+    --gray-200: #e2e8f0;
+    --gray-300: #cbd5e1;
+    --gray-400: #94a3b8;
+    --gray-600: #475569;
+    --gray-800: #1e293b;
+    --success: #10b981;
+    --error: #ef4444;
+    
+    /* Gradients */
+    --gradient: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    
+    /* Border Radius */
+    --radius: 12px;
+    --radius-sm: 8px;
+    --radius-lg: 16px;
+    
+    /* Spacing */
+    --section-padding: 100px;
+    --section-padding-mobile: 60px;
+    
+    /* Transitions */
+    --transition: 0.3s ease;
+}
+
+/* ===========================================
+   2. RESET & BASE
+   =========================================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--gray-800);
+    background: var(--white);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color var(--transition);
+}
+
+ul, ol {
+    list-style: none;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+address {
+    font-style: normal;
+}
+
+/* ===========================================
+   3. UTILITIES
+   =========================================== */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ===========================================
+   4. BUTTONS
+   =========================================== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 28px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all var(--transition);
+    white-space: nowrap;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: var(--white);
+    border-color: var(--primary);
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-outline:hover {
+    background: var(--primary);
+    color: var(--white);
+}
+
+.btn-white {
+    background: var(--white);
+    color: var(--primary);
+    border-color: var(--white);
+}
+
+.btn-white:hover {
+    background: var(--gray-100);
+    transform: translateY(-2px);
+}
+
+.btn-large {
+    padding: 16px 36px;
+    font-size: 18px;
+}
+
+/* ===========================================
+   5. TYPOGRAPHY
+   =========================================== */
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--secondary);
+    text-align: center;
+    margin-bottom: 12px;
+    line-height: 1.2;
+}
+
+.section-subtitle {
+    font-size: 1.125rem;
+    color: var(--gray-600);
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+/* ===========================================
+   6. HEADER & NAVIGATION
+   =========================================== */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    box-shadow: var(--shadow);
+    transition: box-shadow var(--transition);
+}
+
+.header.scrolled {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+    gap: 24px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--secondary);
+    flex-shrink: 0;
+}
+
+.logo span {
+    color: var(--primary);
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+}
+
+.nav-links a {
+    font-weight: 500;
+    color: var(--gray-600);
+    padding: 8px 0;
+    position: relative;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width var(--transition);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-cta {
+    flex-shrink: 0;
+}
+
+/* Mobile Menu Button */
+.mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    padding: 8px;
+    z-index: 1001;
+}
+
+.mobile-menu-btn span {
+    width: 24px;
+    height: 2px;
+    background: var(--secondary);
+    transition: all var(--transition);
+}
+
+.mobile-menu-btn.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-menu-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-btn.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Mobile Navigation */
+.mobile-nav {
+    display: none;
+    position: fixed;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    padding: 24px;
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: all var(--transition);
+    z-index: 999;
+}
+
+.mobile-nav.active {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.mobile-nav-links a {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--gray-800);
+    padding: 12px 0;
+    border-bottom: 1px solid var(--gray-100);
+}
+
+.mobile-nav-links .btn {
+    margin-top: 8px;
+    text-align: center;
+}
+
+/* ===========================================
+   7. HERO SECTION
+   =========================================== */
+.hero {
+    padding: 160px 0 100px;
+    background: var(--gradient);
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 24px;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Page Hero (for subpages) */
+.page-hero {
+    padding: 140px 0 60px;
+    background: var(--gradient);
+    text-align: center;
+}
+
+.page-hero-small {
+    padding: 120px 0 40px;
+}
+
+.page-hero-title {
+    font-size: 2.75rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 16px;
+}
+
+.page-hero-subtitle {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ===========================================
+   8. COVERAGE CHECKER
+   =========================================== */
+.coverage {
+    padding: 80px 0;
+    background: var(--gray-50);
+}
+
+.coverage-form {
+    display: flex;
+    gap: 16px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.coverage-input {
+    flex: 1;
+    padding: 16px 20px;
+    font-size: 16px;
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius-sm);
+    outline: none;
+    transition: border-color var(--transition);
+    font-family: inherit;
+}
+
+.coverage-input:focus {
+    border-color: var(--primary);
+}
+
+.coverage-result {
+    max-width: 600px;
+    margin: 24px auto 0;
+    display: none;
+}
+
+.coverage-success {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px;
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid var(--success);
+    border-radius: var(--radius-sm);
+    color: var(--gray-800);
+}
+
+.coverage-success svg {
+    flex-shrink: 0;
+    color: var(--success);
+}
+
+/* ===========================================
+   9. PRICING PLANS
+   =========================================== */
+.plans {
+    padding: var(--section-padding) 0;
+}
+
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.plans-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.plan-card {
+    position: relative;
+    background: var(--white);
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius);
+    padding: 32px 24px;
+    text-align: center;
+    transition: all var(--transition);
+}
+
+.plan-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.plan-card.popular {
+    border-color: var(--primary);
+    background: linear-gradient(180deg, rgba(37, 99, 235, 0.05) 0%, var(--white) 100%);
+}
+
+.popular-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary);
+    color: var(--white);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.plan-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--secondary);
+    margin-bottom: 16px;
+}
+
+.plan-price {
+    margin-bottom: 24px;
+}
+
+.plan-price .currency {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--gray-600);
+    vertical-align: top;
+}
+
+.plan-price .amount {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--secondary);
+}
+
+.plan-price .period {
+    font-size: 1rem;
+    color: var(--gray-600);
+}
+
+.plan-features {
+    margin-bottom: 32px;
+}
+
+.plan-features li {
+    padding: 10px 0;
+    color: var(--gray-600);
+    border-bottom: 1px solid var(--gray-100);
+    font-size: 0.938rem;
+}
+
+.plan-features li:last-child {
+    border-bottom: none;
+}
+
+.plans-note {
+    text-align: center;
+    margin-top: 32px;
+    color: var(--gray-600);
+}
+
+.plans-note a {
+    color: var(--primary);
+    font-weight: 500;
+}
+
+.plans-note a:hover {
+    text-decoration: underline;
+}
+
+/* ===========================================
+   10. FEATURES / WHY US
+   =========================================== */
+.why-us {
+    padding: var(--section-padding) 0;
+    background: var(--gray-50);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+}
+
+.feature-card {
+    background: var(--white);
+    padding: 32px 24px;
+    border-radius: var(--radius);
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: transform var(--transition);
+}
+
+.feature-card:hover {
+    transform: translateY(-4px);
+}
+
+.feature-icon {
+    width: 64px;
+    height: 64px;
+    background: var(--gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    color: var(--white);
+}
+
+.feature-card h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--secondary);
+    margin-bottom: 12px;
+}
+
+.feature-card p {
+    font-size: 0.938rem;
+    color: var(--gray-600);
+    line-height: 1.6;
+}
+
+/* ===========================================
+   11. SERVICES
+   =========================================== */
+.services {
+    padding: var(--section-padding) 0;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.service-card {
+    background: var(--white);
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius);
+    padding: 40px 32px;
+    transition: all var(--transition);
+}
+
+.service-card:hover {
+    border-color: var(--primary);
+    box-shadow: var(--shadow-lg);
+}
+
+.service-icon {
+    width: 72px;
+    height: 72px;
+    background: var(--gray-100);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    color: var(--primary);
+}
+
+.service-card h3 {
+    font-size: 1.375rem;
+    font-weight: 600;
+    color: var(--secondary);
+    margin-bottom: 16px;
+}
+
+.service-card p {
+    color: var(--gray-600);
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.service-card-media {
+    margin: -16px -8px 24px;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+}
+
+.service-card-media img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.service-link {
+    font-weight: 600;
+    color: var(--primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: gap var(--transition);
+}
+
+.service-link:hover {
+    gap: 8px;
+}
+
+/* ===========================================
+   12. TESTIMONIALS
+   =========================================== */
+.testimonials {
+    padding: var(--section-padding) 0;
+    background: var(--gray-50);
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.testimonial-card {
+    background: var(--white);
+    padding: 32px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.testimonial-text {
+    font-size: 1.063rem;
+    color: var(--gray-600);
+    font-style: italic;
+    margin-bottom: 24px;
+    line-height: 1.7;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.author-avatar {
+    width: 48px;
+    height: 48px;
+    background: var(--gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-weight: 600;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.author-info strong {
+    display: block;
+    color: var(--secondary);
+}
+
+.author-info span {
+    font-size: 14px;
+    color: var(--gray-600);
+}
+
+/* ===========================================
+   13. CTA SECTION
+   =========================================== */
+.cta {
+    padding: var(--section-padding) 0;
+    background: var(--gradient);
+    text-align: center;
+}
+
+.cta-title {
+    font-size: 2.75rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 16px;
+}
+
+.cta-subtitle {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 40px;
+}
+
+/* ===========================================
+   14. FOOTER
+   =========================================== */
+.footer {
+    background: var(--secondary);
+    color: var(--gray-300);
+    padding: 80px 0 24px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 48px;
+    margin-bottom: 48px;
+}
+
+.footer-brand p {
+    margin-top: 16px;
+    font-size: 0.938rem;
+    line-height: 1.6;
+}
+
+.footer-brand .logo {
+    color: var(--white);
+}
+
+.footer-links h4,
+.footer-contact h4 {
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.footer-links ul {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-links a {
+    font-size: 0.938rem;
+}
+
+.footer-links a:hover {
+    color: var(--white);
+}
+
+.footer-contact p {
+    font-size: 0.938rem;
+    margin-bottom: 8px;
+}
+
+.footer-contact a {
+    color: var(--gray-300);
+}
+
+.footer-contact a:hover {
+    color: var(--white);
+}
+
+.social-links {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.social-links a {
+    width: 40px;
+    height: 40px;
+    background: var(--gray-800);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray-300);
+    transition: all var(--transition);
+}
+
+.social-links a:hover {
+    background: var(--primary);
+    color: var(--white);
+}
+
+.footer-bottom {
+    border-top: 1px solid var(--gray-800);
+    padding-top: 24px;
+    text-align: center;
+    font-size: 0.875rem;
+}
+
+/* ===========================================
+   15. PAGE SECTIONS (Subpages)
+   =========================================== */
+.page-section {
+    padding: var(--section-padding) 0;
+}
+
+.page-section.alt-bg {
+    background: var(--gray-50);
+}
+
+/* Steps Grid */
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+}
+
+.step-card {
+    text-align: center;
+    padding: 24px;
+}
+
+.step-number {
+    width: 56px;
+    height: 56px;
+    background: var(--gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 auto 20px;
+}
+
+.step-card h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--secondary);
+    margin-bottom: 12px;
+}
+
+.step-card p {
+    color: var(--gray-600);
+    font-size: 0.938rem;
+}
+
+/* ===========================================
+   16. CONTACT PAGE
+   =========================================== */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+}
+
+.contact-form-wrapper h2,
+.contact-info-wrapper h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--secondary);
+    margin-bottom: 24px;
+}
+
+/* Contact Form */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-weight: 500;
+    color: var(--gray-800);
+    font-size: 0.938rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 14px 16px;
+    font-size: 16px;
+    font-family: inherit;
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius-sm);
+    outline: none;
+    transition: border-color var(--transition);
+    background: var(--white);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--primary);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-success {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px;
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid var(--success);
+    border-radius: var(--radius-sm);
+    color: var(--gray-800);
+    margin-top: 20px;
+}
+
+.form-success svg {
+    flex-shrink: 0;
+    color: var(--success);
+}
+
+/* Contact Info Cards */
+.contact-info-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.contact-info-card {
+    display: flex;
+    gap: 16px;
+    padding: 20px;
+    background: var(--gray-50);
+    border-radius: var(--radius-sm);
+}
+
+.contact-info-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--gradient);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    flex-shrink: 0;
+}
+
+.contact-info-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--secondary);
+    margin-bottom: 8px;
+}
+
+.contact-info-card p,
+.contact-info-card address {
+    color: var(--gray-600);
+    font-size: 0.938rem;
+    line-height: 1.6;
+}
+
+.contact-info-card a {
+    color: var(--primary);
+}
+
+.contact-info-card a:hover {
+    text-decoration: underline;
+}
+
+/* ===========================================
+   17. 404 ERROR PAGE
+   =========================================== */
+.error-page {
+    padding: 160px 0 100px;
+    text-align: center;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+}
+
+.error-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.error-code {
+    font-size: 8rem;
+    font-weight: 700;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 16px;
+}
+
+.error-content h1 {
+    font-size: 2rem;
+    color: var(--secondary);
+    margin-bottom: 16px;
+}
+
+.error-content > p {
+    color: var(--gray-600);
+    margin-bottom: 32px;
+}
+
+.error-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+}
+
+.error-links p {
+    color: var(--gray-600);
+    margin-bottom: 16px;
+}
+
+.error-links ul {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.error-links a {
+    color: var(--primary);
+    font-weight: 500;
+}
+
+.error-links a:hover {
+    text-decoration: underline;
+}
+
+/* ===========================================
+   18. RESPONSIVE - TABLET
+   =========================================== */
+@media (max-width: 1024px) {
+    :root {
+        --section-padding: 80px;
+    }
+
+    .plans-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .plans-grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact-grid {
+        gap: 48px;
+    }
+}
+
+/* ===========================================
+   19. RESPONSIVE - MOBILE
+   =========================================== */
+@media (max-width: 768px) {
+    :root {
+        --section-padding: 60px;
+    }
+
+    /* Header Mobile */
+    .nav-links,
+    .nav-cta {
+        display: none;
+    }
+
+    .mobile-menu-btn {
+        display: flex;
+    }
+
+    .mobile-nav {
+        display: block;
+    }
+
+    /* Hero Mobile */
+    .hero {
+        padding: 120px 0 60px;
+    }
+
+    .hero-title {
+        font-size: 2.25rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .page-hero {
+        padding: 120px 0 40px;
+    }
+
+    .page-hero-title {
+        font-size: 2rem;
+    }
+
+    /* Typography Mobile */
+    .section-title {
+        font-size: 1.875rem;
+    }
+
+    .section-subtitle {
+        margin-bottom: 32px;
+    }
+
+    /* Coverage Mobile */
+    .coverage-form {
+        flex-direction: column;
+    }
+
+    /* Plans Mobile */
+    .plans-grid,
+    .plans-grid-3 {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    /* Features Mobile */
+    .features-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    /* Services Mobile */
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Testimonials Mobile */
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Steps Mobile */
+    .steps-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    /* CTA Mobile */
+    .cta-title {
+        font-size: 2rem;
+    }
+
+    /* Footer Mobile */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        text-align: center;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    /* Contact Mobile */
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+
+    /* Button Mobile */
+    .btn-large {
+        padding: 14px 28px;
+        font-size: 16px;
+        width: 100%;
+    }
+
+    /* Error Page Mobile */
+    .error-code {
+        font-size: 5rem;
+    }
+
+    .error-actions {
+        flex-direction: column;
+    }
+
+    .error-links ul {
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+
+/* ===========================================
+   20. PRINT STYLES
+   =========================================== */
+@media print {
+    .header,
+    .mobile-nav,
+    .cta,
+    .coverage-form,
+    .btn {
+        display: none !important;
+    }
+
+    .hero {
+        background: none !important;
+        color: var(--secondary) !important;
+        padding: 40px 0;
+    }
+
+    .hero-title,
+    .hero-subtitle {
+        color: var(--secondary) !important;
+    }
+}
+
+/* ===========================================
+   21. BREADCRUMB
+   =========================================== */
+.breadcrumb {
+    background: var(--gray-100);
+    border-bottom: 1px solid var(--gray-200);
+    padding: 14px 0;
+}
+
+.breadcrumb-list {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+.breadcrumb-item {
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+    color: var(--gray-600);
+}
+
+.breadcrumb-item:not(:last-child)::after {
+    content: '/';
+    margin-left: 8px;
+    color: var(--gray-400);
+}
+
+.breadcrumb-item a {
+    color: var(--primary);
+    font-weight: 500;
+}
+
+.breadcrumb-item a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb-item.active {
+    color: var(--gray-800);
+    font-weight: 500;
+}
+
+/* ===========================================
+   22. HUB CARDS (Parent page child-link grids)
+   =========================================== */
+.hub-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.hub-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hub-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.hub-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--white);
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius);
+    padding: 40px 32px;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    transition: all var(--transition);
+}
+
+.hub-card:hover {
+    border-color: var(--primary);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+}
+
+.hub-card-icon {
+    width: 88px;
+    height: 88px;
+    background: var(--gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    color: var(--white);
+}
+
+.hub-card h3 {
+    font-size: 1.375rem;
+    font-weight: 600;
+    color: var(--secondary);
+    margin-bottom: 12px;
+}
+
+.hub-card p {
+    color: var(--gray-600);
+    font-size: 0.938rem;
+    line-height: 1.6;
+    flex: 1;
+    margin-bottom: 24px;
+}
+
+.hub-card-link {
+    font-weight: 600;
+    color: var(--primary);
+    font-size: 0.938rem;
+    margin-top: auto;
+}
+
+/* ===========================================
+   23. CONTENT BLOCK & FEATURE LIST
+   =========================================== */
+.content-block {
+    max-width: 800px;
+    margin: 32px auto 0;
+}
+
+.content-block p {
+    color: var(--gray-600);
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 16px;
+    list-style: none;
+}
+
+.feature-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    color: var(--gray-600);
+    padding: 12px 16px;
+    background: var(--gray-50);
+    border-radius: var(--radius-sm);
+    border-left: 3px solid var(--primary);
+    font-size: 0.938rem;
+    line-height: 1.6;
+}
+
+.feature-list li strong {
+    color: var(--secondary);
+}
+
+/* ===========================================
+   24. CONTACT CTA BOX
+   =========================================== */
+.contact-cta-box {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    background: var(--gray-50);
+    border-radius: var(--radius);
+    padding: 48px 40px;
+    border: 2px solid var(--gray-200);
+}
+
+.contact-cta-box p {
+    color: var(--gray-600);
+    font-size: 1.063rem;
+    line-height: 1.7;
+    margin-bottom: 32px;
+}
+
+/* ===========================================
+   25. DESKTOP DROPDOWN NAVIGATION
+   =========================================== */
+.nav-dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    background: var(--white);
+    min-width: 200px;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--gray-200);
+    padding: 8px 0;
+    z-index: 1100;
+    list-style: none;
+}
+
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown:focus-within .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 10px 20px;
+    font-size: 0.938rem;
+    color: var(--gray-600);
+    font-weight: 500;
+    transition: all var(--transition);
+}
+
+.dropdown-menu li a:hover {
+    color: var(--primary);
+    background: var(--gray-50);
+    padding-left: 24px;
+}
+
+.nav-dropdown-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.nav-dropdown-toggle::after {
+    content: '\25BE';
+    font-size: 0.75em;
+    opacity: 0.7;
+    transition: transform var(--transition);
+    display: inline-block;
+}
+
+.nav-dropdown:hover .nav-dropdown-toggle::after {
+    transform: rotate(180deg);
+}
+
+/* ===========================================
+   26. MOBILE DROPDOWN SUBMENUS
+   =========================================== */
+.mobile-dropdown-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--gray-800);
+    padding: 12px 0;
+    border-bottom: 1px solid var(--gray-100);
+    cursor: pointer;
+    text-align: left;
+}
+
+.mobile-dropdown-toggle::after {
+    content: '\25BE';
+    font-size: 0.75em;
+    transition: transform var(--transition);
+    flex-shrink: 0;
+}
+
+.mobile-dropdown-toggle[aria-expanded="true"]::after {
+    transform: rotate(180deg);
+}
+
+.mobile-dropdown-menu {
+    display: none;
+    flex-direction: column;
+    padding: 8px 0 8px 16px;
+    gap: 4px;
+    list-style: none;
+}
+
+.mobile-dropdown-menu.active {
+    display: flex;
+}
+
+.mobile-dropdown-menu li a {
+    display: block;
+    padding: 8px 0;
+    font-size: 1rem;
+    color: var(--gray-600);
+    border-bottom: none;
+}
+
+.mobile-dropdown-menu li a:hover {
+    color: var(--primary);
+}
+
+.mobile-single-link::after {
+    content: none;
+}
+
+.nav-single-link::after {
+    content: none;
+}
+
+/* ===========================================
+   28. VISUAL IMAGE GRID
+   =========================================== */
+.page-visual-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.visual-card {
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    background: var(--white);
+}
+
+.visual-card img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+}
+
+/* ===========================================
+   27. RESPONSIVE - HUB GRIDS & BREADCRUMB
+   =========================================== */
+@media (max-width: 1024px) {
+    .hub-grid,
+    .hub-grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .hub-grid,
+    .hub-grid-2,
+    .hub-grid-3 {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .contact-cta-box {
+        padding: 32px 24px;
+    }
+
+    .page-visual-grid {
+        grid-template-columns: 1fr;
+    }
+}
