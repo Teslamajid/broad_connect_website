@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Page Not Found | BroadConnect</title>
+    <meta name="description" content="The page you're looking for doesn't exist. Return to BroadConnect homepage.">
+    <meta name="robots" content="noindex, follow">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    
+    <!-- Fonts & Styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main id="main-content">
+        <section class="error-page" aria-labelledby="error-heading">
+            <div class="container">
+                <div class="error-content">
+                    <div class="error-code">404</div>
+                    <h1 id="error-heading">Page Not Found</h1>
+                    <p>Oops! The page you're looking for doesn't exist or has been moved.</p>
+                    <div class="error-actions">
+                        <a href="/index.html" class="btn btn-primary btn-large">Go to Homepage</a>
+                        <a href="/pages/contact.html" class="btn btn-outline btn-large">Contact Support</a>
+                    </div>
+                    <div class="error-links">
+                        <p>Or try these helpful links:</p>
+                        <ul>
+                            <li><a href="/index.html#plans">View Our Plans</a></li>
+                            <li><a href="/pages/ftth.html">Home Internet</a></li>
+                            <li><a href="/pages/small-business.html">Business Solutions</a></li>
+                            <li><a href="/index.html#coverage">Check Coverage</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="/js/main.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            ComponentLoader.loadAll([
+                { id: 'header-placeholder', path: '/components/header.html' },
+                { id: 'footer-placeholder', path: '/components/footer.html' }
+            ]);
+        });
+    </script>
+</body>
+</html>
