@@ -346,8 +346,11 @@ address {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    background-repeat: no-repeat;
     text-align: center;
     position: relative;
+    will-change: transform;
+    contain: layout style paint;
 }
 
 .hero-content {
@@ -381,8 +384,11 @@ address {
         url('/assets/images/hero-bg.jpg');
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     text-align: center;
     position: relative;
+    will-change: transform;
+    contain: layout style paint;
 }
 
 .page-hero-small {
@@ -612,6 +618,8 @@ address {
         url('/assets/images/pattern-bg.jpg');
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
+    contain: layout style paint;
 }
 
 .features-grid {
@@ -744,6 +752,8 @@ address {
         url('/assets/images/testimonials-bg.jpg');
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
+    contain: layout style paint;
 }
 
 .testimonials-grid {
@@ -808,8 +818,11 @@ address {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    background-repeat: no-repeat;
     text-align: center;
     position: relative;
+    will-change: transform;
+    contain: layout style paint;
 }
 
 .cta-title {
