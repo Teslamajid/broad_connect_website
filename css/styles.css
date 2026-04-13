@@ -561,21 +561,24 @@ address {
 }
 
 .plan-price .currency {
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-weight: 600;
     color: var(--gray-600);
-    vertical-align: top;
+    vertical-align: middle;
+    margin-right: 2px;
 }
 
 .plan-price .amount {
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: 700;
     color: var(--secondary);
 }
 
 .plan-price .period {
-    font-size: 1rem;
+    font-size: 0.875rem;
     color: var(--gray-600);
+    display: block;
+    margin-top: 4px;
 }
 
 .plan-features {
