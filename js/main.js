@@ -725,6 +725,29 @@ const FormValidation = {
     }
 };
 
+/* ----- Plan Selection (links Select Plan buttons to checkout) ----- */
+const PlanSelection = {
+    init() {
+        document.querySelectorAll('.plan-card').forEach(card => {
+            const cta = card.querySelector('.btn');
+            if (!cta) return;
+
+            const label = (cta.textContent || '').trim().toLowerCase();
+            // Only rewrite Select Plan / Get Started style CTAs, not "Learn More" / "Contact Sales"
+            if (!['select plan', 'get started', 'choose plan'].includes(label)) return;
+
+            const nameEl = card.querySelector('.plan-name');
+            const amountEl = card.querySelector('.plan-price .amount');
+            if (!nameEl || !amountEl) return;
+
+            const planName = nameEl.textContent.trim();
+            const planPrice = amountEl.textContent.trim();
+            const url = `/pages/checkout?plan=${encodeURIComponent(planName)}&price=${encodeURIComponent(planPrice)}`;
+            cta.setAttribute('href', url);
+        });
+    }
+};
+
 /* ----- Main App ----- */
 const App = {
     init() {
@@ -739,6 +762,7 @@ const App = {
         ActiveNav.init();
         DynamicYear.init();
         Breadcrumb.init();
+        PlanSelection.init();
         Animations.init();
     }
 };
