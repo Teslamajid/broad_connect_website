@@ -1830,23 +1830,56 @@ a.hub-card:focus-visible {
 }
 
 .dropdown-menu {
-    display: none;
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
     position: absolute;
-    top: calc(100% + 8px);
+    top: 100%;
     left: 0;
+    margin-top: 0;
+    padding-top: 8px;
+    background: transparent;
+    min-width: 220px;
+    z-index: 1100;
+    list-style: none;
+    transition: opacity 150ms ease, visibility 0s linear 150ms;
+}
+
+.dropdown-menu::before {
+    content: "";
+    display: block;
     background: var(--white);
-    min-width: 200px;
     border-radius: var(--radius-sm);
     box-shadow: var(--shadow-lg);
     border: 1px solid var(--gray-200);
-    padding: 8px 0;
-    z-index: 1100;
-    list-style: none;
+    position: absolute;
+    inset: 8px 0 0 0;
+    z-index: -1;
+}
+
+.dropdown-menu > li {
+    background: var(--white);
+}
+
+.dropdown-menu > li:first-child {
+    border-top-left-radius: var(--radius-sm);
+    border-top-right-radius: var(--radius-sm);
+    padding-top: 4px;
+}
+
+.dropdown-menu > li:last-child {
+    border-bottom-left-radius: var(--radius-sm);
+    border-bottom-right-radius: var(--radius-sm);
+    padding-bottom: 4px;
 }
 
 .nav-dropdown:hover .dropdown-menu,
 .nav-dropdown:focus-within .dropdown-menu {
-    display: block;
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 150ms ease, visibility 0s linear 0s;
 }
 
 .dropdown-menu li a {
