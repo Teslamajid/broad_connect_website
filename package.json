@@ -1,0 +1,12 @@
+{
+  "name": "broadconnect-website",
+  "version": "1.0.0",
+  "description": "BroadConnect ISP website",
+  "scripts": {
+    "dev": "serve -l 3000 --no-clipboard",
+    "start": "serve -l 3000 --no-clipboard"
+  },
+  "devDependencies": {
+    "serve": "^14.2.6"
+  }
+}

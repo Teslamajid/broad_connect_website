@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Checkout | BroadConnect</title>
+    <meta name="description" content="Complete your BroadConnect plan order. Review your selected plan and provide your contact details.">
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+    <!-- Fonts & Styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main id="main-content">
+        <!-- PAGE HERO -->
+        <section class="page-hero page-hero-small" aria-labelledby="page-hero-heading">
+            <div class="container">
+                <h1 class="page-hero-title" id="page-hero-heading">Checkout</h1>
+                <p class="page-hero-subtitle">Review your plan and complete your details to get connected.</p>
+            </div>
+        </section>
+
+        <!-- CHECKOUT SECTION -->
+        <section class="page-section" aria-labelledby="checkout-heading">
+            <div class="container">
+                <h2 id="checkout-heading" class="visually-hidden">Order Details</h2>
+                <div class="checkout-grid">
+                    <!-- Customer Details Form -->
+                    <div class="checkout-form-wrapper">
+                        <h3 class="checkout-section-title">Your Details</h3>
+                        <p class="checkout-section-subtitle">Tell us how to reach you and we'll get your installation scheduled.</p>
+
+                        <form class="checkout-form" id="checkoutForm" novalidate>
+                            <div class="form-group">
+                                <label for="fullName">Full Name <span class="required">*</span></label>
+                                <input type="text" id="fullName" name="fullName" required autocomplete="name" placeholder="e.g. Aminata Mansaray">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address <span class="required">*</span></label>
+                                <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number <span class="required">*</span></label>
+                                <input type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="+232 76 000 000">
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Installation Address</label>
+                                <input type="text" id="address" name="address" autocomplete="street-address" placeholder="Street, City">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-large checkout-cta">
+                                Proceed to Payment
+                            </button>
+                            <p class="checkout-disclaimer">
+                                By proceeding, you agree to BroadConnect's Terms of Service. No payment will be charged at this step.
+                            </p>
+                        </form>
+
+                        <div id="checkoutSuccess" class="checkout-success" hidden role="alert">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                            <div>
+                                <h4>Thanks, you're all set!</h4>
+                                <p>We've received your details and a BroadConnect specialist will contact you shortly to confirm installation and payment options.</p>
+                                <a href="/" class="btn btn-outline">Back to Home</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Order Summary -->
+                    <aside class="checkout-summary" aria-label="Order summary">
+                        <div class="checkout-summary-card">
+                            <h3 class="checkout-section-title">Order Summary</h3>
+                            <div class="summary-plan">
+                                <div class="summary-plan-header">
+                                    <span class="summary-plan-label">Selected Plan</span>
+                                    <span class="summary-plan-name" id="summaryPlanName">Standard</span>
+                                </div>
+                                <div class="summary-plan-price">
+                                    <span class="currency">Le</span>
+                                    <span class="amount" id="summaryPlanPrice">550,000</span>
+                                    <span class="period">/month</span>
+                                </div>
+                            </div>
+
+                            <ul class="summary-features" id="summaryFeatures">
+                                <li>Unlimited Data</li>
+                                <li>Free Standard Installation</li>
+                                <li>24/7 Customer Support</li>
+                            </ul>
+
+                            <div class="summary-totals">
+                                <div class="summary-row">
+                                    <span>Plan</span>
+                                    <span id="summarySubtotal">Le 550,000</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span>Installation</span>
+                                    <span class="summary-free">Free</span>
+                                </div>
+                                <div class="summary-row summary-total">
+                                    <span>Due Today</span>
+                                    <span>Le 0</span>
+                                </div>
+                                <p class="summary-note">First month billed after installation.</p>
+                            </div>
+
+                            <a href="/" class="summary-change-link">&larr; Change plan</a>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="/js/main.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            ComponentLoader.loadAll([
+                { id: 'header-placeholder', path: '/components/header.html' },
+                { id: 'footer-placeholder', path: '/components/footer.html' }
+            ]);
+
+            // Populate order summary from URL params
+            const params = new URLSearchParams(window.location.search);
+            const planName = params.get('plan');
+            const planPrice = params.get('price');
+
+            if (planName) {
+                const nameEl = document.getElementById('summaryPlanName');
+                if (nameEl) nameEl.textContent = planName;
+            }
+            if (planPrice) {
+                const priceEl = document.getElementById('summaryPlanPrice');
+                const subtotalEl = document.getElementById('summarySubtotal');
+                if (priceEl) priceEl.textContent = planPrice;
+                if (subtotalEl) subtotalEl.textContent = 'Le ' + planPrice;
+            }
+
+            // Handle form submission (UI only)
+            const form = document.getElementById('checkoutForm');
+            const success = document.getElementById('checkoutSuccess');
+            if (form) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    if (!form.checkValidity()) {
+                        form.reportValidity();
+                        return;
+                    }
+                    const btn = form.querySelector('button[type="submit"]');
+                    btn.classList.add('is-loading');
+                    btn.disabled = true;
+                    setTimeout(() => {
+                        form.hidden = true;
+                        if (success) success.hidden = false;
+                        window.scrollTo({ top: success.offsetTop - 100, behavior: 'smooth' });
+                    }, 900);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
