@@ -5,9 +5,19 @@
             Broad<span>Connect</span>
         </a>
         <ul class="nav-links" id="navLinks">
-            <li><a href="/" class="nav-dropdown-toggle nav-single-link">Home</a></li>
-            <li><a href="/about/AboutUs-BroadConnect/" class="nav-dropdown-toggle nav-single-link">About</a></li>
-            <li><a href="/services/" class="nav-dropdown-toggle nav-single-link">Services</a></li>
+            <li class="nav-dropdown">
+                <a href="/" class="nav-dropdown-toggle">Home</a>
+                <ul class="dropdown-menu">
+                    <li><a href="/your-home/fiber-to-the-home-ftth/">Fiber To The Home (FTTH)</a></li>
+                </ul>
+            </li>
+            <li class="nav-dropdown">
+                <a href="/about/AboutUs-BroadConnect/" class="nav-dropdown-toggle">About</a>
+                <ul class="dropdown-menu">
+                    <li><a href="/about/AboutUs-BroadConnect/">About Us - BroadConnect</a></li>
+                    <li><a href="/services/">Services</a></li>
+                </ul>
+            </li>
             <li class="nav-dropdown">
                 <a href="/small-medium-business/" class="nav-dropdown-toggle">Small &amp; Medium Business</a>
                 <ul class="dropdown-menu">
@@ -37,9 +47,19 @@
     <!-- Mobile Menu -->
     <div class="mobile-nav" id="mobileNav" aria-hidden="true">
         <ul class="mobile-nav-links">
-            <li><a href="/" class="mobile-dropdown-toggle mobile-single-link">Home</a></li>
-            <li><a href="/about/AboutUs-BroadConnect/" class="mobile-dropdown-toggle mobile-single-link">About</a></li>
-            <li><a href="/services/" class="mobile-dropdown-toggle mobile-single-link">Services</a></li>
+            <li class="mobile-dropdown">
+                <button class="mobile-dropdown-toggle" aria-expanded="false">Home</button>
+                <ul class="mobile-dropdown-menu">
+                    <li><a href="/your-home/fiber-to-the-home-ftth/">Fiber To The Home (FTTH)</a></li>
+                </ul>
+            </li>
+            <li class="mobile-dropdown">
+                <button class="mobile-dropdown-toggle" aria-expanded="false">About</button>
+                <ul class="mobile-dropdown-menu">
+                    <li><a href="/about/AboutUs-BroadConnect/">About Us - BroadConnect</a></li>
+                    <li><a href="/services/">Services</a></li>
+                </ul>
+            </li>
             <li class="mobile-dropdown">
                 <button class="mobile-dropdown-toggle" aria-expanded="false">Small &amp; Medium Business</button>
                 <ul class="mobile-dropdown-menu">
